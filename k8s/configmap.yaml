@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: velo-config
+  namespace: bonjour-velo
+data:
+  APP_ENV: production
+  GBFS_ENDPOINT: "https://gbfs.velo.ca/gbfs/en/"
+  PRICING_FILE: "/etc/velo-pricing/pricing.json"
+  FLEET_API_PORT: "8080"
+  LOG_LEVEL: info

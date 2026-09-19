@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bonjour Vélo — National Bike-Share Program (Digital Transformations Canada)</title>
+<style>
+:root{--bg:#0f1420;--card:#151b2c;--card2:#1a2240;--red:#e24b3a;--darkred:#7a1f16;--gold:#ffc53d;--txt:#e6ebf5;--mut:#93a0bd;--line:#26324f;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--txt);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;}
+.wrap{max-width:1000px;margin:0 auto;padding:0 20px 60px;}
+header{border-bottom:3px solid var(--red);padding:28px 0 18px;margin-bottom:26px;}
+.brand{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);}
+h1{font-size:2rem;margin:6px 0 4px;}
+.sub{color:var(--mut);}
+h2{font-size:1.3rem;margin:34px 0 12px;padding-left:10px;border-left:4px solid var(--red);}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin-bottom:8px;}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;}
+.card b{display:block;margin-bottom:6px;font-size:1.02rem;}
+.card .price{font-size:1.5rem;font-weight:700;color:var(--gold);}
+.card .price sup{font-size:.75rem;color:var(--mut);font-weight:400;}
+.card p{color:var(--mut);font-size:.88rem;margin-top:6px;}
+table{width:100%;border-collapse:collapse;background:var(--card);border-radius:12px;overflow:hidden;margin:10px 0 20px;}
+th{background:var(--card2);text-align:left;padding:10px 14px;font-size:.85rem;color:#fff;}
+td{padding:9px 14px;border-top:1px solid var(--line);font-size:.9rem;}
+tbody tr:hover{background:var(--card2);}
+pre{background:#0b0f19;border:1px solid var(--line);border-radius:12px;padding:16px;overflow-x:auto;margin:10px 0;}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.85rem;}
+p code,li code,td code{background:var(--card2);padding:2px 6px;border-radius:6px;}
+ul{margin:8px 0 8px 22px;}
+li{margin-bottom:6px;}
+footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;color:var(--mut);font-size:.8rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+a{color:var(--gold);}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brand">Digital Transformations Canada &middot; Mobility Division</div>
+    <h1>Bonjour V&eacute;lo</h1>
+    <div class="sub">A national bike-share program. Low prices by decree, powered by a resilient Kubernetes fleet.</div>
+  </header>
+
+  <h2>Pricing</h2>
+  <div class="cards">
+    <div class="card"><b>Single Ride</b><div class="price">$1.50<sup>/unlock</sup></div><p>+ $0.10/min. No membership required.</p></div>
+    <div class="card"><b>Day Pass</b><div class="price">$8.00<sup>/day</sup></div><p>Unlimited 60-min rides for 24 hours.</p></div>
+    <div class="card"><b>Annual Membership</b><div class="price">$95.00<sup>/yr</sup></div><p>Unlimited 45-min rides across the nation.</p></div>
+  </div>
+
+  <h2>Fleet Overview</h2>
+  <p class="sub">10,000+ bikes across 1,000+ stations, operated as a single national program. Every kiosk, charge node, and telemetry pipeline runs on Kubernetes.</p>
+  <table>
+    <thead><tr><th>Service</th><th>Description</th><th>Runs on</th></tr></thead>
+    <tbody>
+      <tr><td><b>bonjourvelo-api</b></td><td>GBFS feeds + station telemetry API</td><td>Kubernetes &middot; 2 replicas &middot; HPA</td></tr>
+      <tr><td><b>station-kiosk</b></td><td>Per-station checkout worker pods</td><td>Kubernetes &middot; rolling deploy</td></tr>
+      <tr><td><b>charge-node</b></td><td>E-assist battery swap schedulers</td><td>Kubernetes &middot; stateful set</td></tr>
+      <tr><td><b>ops-dashboard</b></td><td>National fleet health + utilization</td><td>Kubernetes &middot; stateless</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Deploy the National Fleet</h2>
+<pre><code>make validate   # client-side check of the Kubernetes manifests
+make deploy     # kubectl apply -k k8s &rarr; national rollout</code></pre>
+
+  <h2>Member Perks</h2>
+  <ul>
+    <li>Membership cards and pay-per-ride at every kiosk</li>
+    <li>Electric-assist available on all <b>V&eacute;lo &Eacute;</b> bikes</li>
+    <li>Free first 15 minutes on every ride</li>
+    <li>Real-time station availability on the mobile app</li>
+  </ul>
+
+  <footer>
+    <span>Form CSB-42 (National Bike-Share Indemnity) required for corporate accounts.</span>
+    <span>Kubernetes-powered &middot; GPL-3.0 &middot; Un bon v&eacute;lo pour tous.</span>
+  </footer>
+</div>
+</body>
+</html>
